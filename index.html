@@ -69,6 +69,10 @@
     .btn:hover { filter: brightness(1.25); }
     .btn:focus-visible { outline: 3px solid var(--red); outline-offset: 3px; }
     .story a, .pk9h a:not(.btn) { color: var(--navy); font-weight: 600; }
+    .story .meet { margin-top: 18px; }
+    .story .meet a { display: inline-flex; align-items: center; gap: 12px; text-decoration: none; text-align: left; }
+    .story .meet a span { text-decoration: underline; text-underline-offset: 3px; }
+    .story .meet img { width: 52px; height: auto; flex: none; filter: drop-shadow(0 3px 5px rgba(15, 34, 80, .3)); }
     .ig { padding: 26px 12px 0; }
     .pk9h { padding: 26px 20px 8px; text-align: center; }
     .pk9h h2 { font: 400 clamp(30px, 9vw, 40px)/1.1 "Yellowtail", cursive; margin: 0 0 10px; }
@@ -156,7 +160,7 @@
     <section class="story">
       <p>Tango is a retired police K9 who faithfully served and protected the community of Menomonee Falls for six years. Now he&rsquo;s facing a new battle &mdash; <strong>cancer.</strong></p>
       <p>Tango&rsquo;s handler and family have asked that all donations go to <a href="https://projectk9hero.org" target="_blank" rel="noopener">Project K-9 Hero</a>, the nonprofit supporting his medical care. Gifts sent to @K9Tango on Venmo are forwarded to them.</p>
-      <p><a href="/meet/">Meet Tango and see his photos &rarr;</a></p>
+      <p class="meet"><a href="/meet/"><img src="/photos/badge.webp" alt="" width="360" height="412"><span>Meet Tango and see his photos &rarr;</span></a></p>
     </section>
 
     <div class="banner">
