@@ -57,6 +57,7 @@
     .banner .big { font: 400 clamp(40px, 12vw, 58px)/1.05 "Yellowtail", cursive; margin: 0; }
     .banner .small { margin: 8px 0 0; font-weight: 600; letter-spacing: .14em; font-size: 13px; text-transform: uppercase; }
     .actions { padding: 26px 20px 8px; display: grid; gap: 14px; }
+    .actions-label { margin: 0; text-align: center; font: 600 14px/1.2 "Barlow", system-ui, sans-serif; letter-spacing: .16em; text-transform: uppercase; }
     .btn {
       display: block; text-decoration: none; text-align: center; color: #fff;
       background: var(--navy); border-radius: 6px; padding: 18px 16px; min-height: 76px;
@@ -66,7 +67,8 @@
     .btn span { display: block; font-size: 15px; letter-spacing: .08em; text-transform: uppercase; opacity: .9; margin-top: 4px; }
     .btn:hover { filter: brightness(1.25); }
     .btn:focus-visible { outline: 3px solid var(--red); outline-offset: 3px; }
-    .story a { color: var(--navy); font-weight: 600; }
+    .story a, .pk9h a:not(.btn) { color: var(--navy); font-weight: 600; }
+    .ig { padding: 26px 12px 0; }
     .pk9h { padding: 26px 20px 8px; text-align: center; }
     .pk9h h2 { font: 400 clamp(30px, 9vw, 40px)/1.1 "Yellowtail", cursive; margin: 0 0 10px; }
     .pk9h p { margin: 0 0 8px; font-size: 17px; }
@@ -104,8 +106,7 @@
 
     <section class="story">
       <p>Tango is a retired police K9 who faithfully served and protected the community of Menomonee Falls for six years. Now he&rsquo;s facing a new battle &mdash; <strong>cancer.</strong></p>
-      <p>On Tuesday, October 20, Tango will have surgery to remove his spleen after blood tests showed cancer.</p>
-      <p>Tango&rsquo;s handler and family have asked that all donations go to <a href="https://projectk9hero.org" rel="noopener">Project K-9 Hero</a>, the nonprofit supporting his medical care. Gifts sent to @K9Tango on Venmo are forwarded to them.</p>
+      <p>Tango&rsquo;s handler and family have asked that all donations go to <a href="https://projectk9hero.org" target="_blank" rel="noopener">Project K-9 Hero</a>, the nonprofit supporting his medical care. Gifts sent to @K9Tango on Venmo are forwarded to them.</p>
     </section>
 
     <div class="banner">
@@ -113,26 +114,36 @@
       <p class="small">His treatment &nbsp;|&nbsp; His care &nbsp;|&nbsp; His next chapter</p>
     </div>
 
-    <div class="actions">
-      <a class="btn" id="venmo" href="https://venmo.com/u/K9Tango" rel="noopener">
-        <b>Donate on Venmo</b>
-        <span>Tango&rsquo;s treatment &middot; @K9Tango</span>
-      </a>
-      <a class="btn" id="meal" href="https://mealtrain.com/75zqm2" rel="noopener">
-        <b>Meal Train</b>
-        <span>Help support Tango and his family</span>
-      </a>
-    </div>
+    <section class="ig" aria-label="Instagram post about Tango">
+      <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DehFtbpFkQn/" data-instgrm-version="14" style="background:#fff; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin:0 auto; max-width:540px; min-width:280px; padding:0; width:100%;">
+        <a href="https://www.instagram.com/p/DehFtbpFkQn/" target="_blank" rel="noopener">View this post on Instagram</a>
+      </blockquote>
+      <script async src="https://www.instagram.com/embed.js"></script>
+    </section>
 
     <section class="pk9h" aria-labelledby="pk9h-title">
       <h2 id="pk9h-title">Give directly to Project K-9 Hero</h2>
       <p>Project K-9 Hero is a national 501(c)(3) nonprofit that helps retired police K9s with medical care. It relies on donations to operate.</p>
+      <p>Care for K9 heroes like Tango is made possible by the generosity of caring people. Every gift helps make sure these loyal partners get the care they deserve after a lifetime of service.</p>
+      <p><a href="https://www.facebook.com/share/1J2rSTciTc/" target="_blank" rel="noopener">Read the full announcement</a></p>
       <p class="ein">EIN 81-1770909</p>
-      <a class="btn alt" href="https://projectk9hero.org" rel="noopener">
+      <a class="btn alt" href="https://projectk9hero.org" target="_blank" rel="noopener">
         <b>Visit Project K-9 Hero</b>
         <span>projectk9hero.org</span>
       </a>
     </section>
+
+    <div class="actions">
+      <h2 class="actions-label">Other ways to help</h2>
+      <a class="btn" id="venmo" href="https://venmo.com/u/K9Tango" target="_blank" rel="noopener">
+        <b>Donate on Venmo</b>
+        <span>Tango&rsquo;s treatment &middot; @K9Tango</span>
+      </a>
+      <a class="btn" id="meal" href="https://mealtrain.com/75zqm2" target="_blank" rel="noopener">
+        <b>Meal Train</b>
+        <span>Help support Tango and his family</span>
+      </a>
+    </div>
 
     <section class="share" aria-labelledby="share-title">
       <h2 id="share-title">Share Tango&rsquo;s story</h2>
