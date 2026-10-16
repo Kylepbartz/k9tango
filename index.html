@@ -223,6 +223,28 @@
       setTimeout(stop, 8000);
     })();
     (function () {
+      // /?to=give loads the page at the top, then scrolls down to that section.
+      var id = new URLSearchParams(location.search).get("to");
+      var target = id && document.getElementById(id);
+      if (!target) return;
+      history.replaceState(null, "", location.pathname);
+      var behavior = matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth";
+      var ig = document.querySelector(".ig");
+      var ro = null;
+      function go() { target.scrollIntoView({ behavior: behavior }); }
+      function stop() { if (ro) ro.disconnect(); }
+      ["wheel", "touchstart", "keydown", "mousedown"].forEach(function (ev) {
+        addEventListener(ev, stop, { once: true, passive: true });
+      });
+      setTimeout(go, 700);
+      // The Instagram embed grows after load and shifts the target, so re-aim while it resizes.
+      if (ig && "ResizeObserver" in window) {
+        ro = new ResizeObserver(function () { if (ig.offsetHeight > 200) go(); });
+        ro.observe(ig);
+        setTimeout(stop, 8000);
+      }
+    })();
+    (function () {
       var fab = document.getElementById("float-donate");
       if ("IntersectionObserver" in window) {
         var visible = new Set();
