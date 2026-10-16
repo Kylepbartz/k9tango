@@ -209,6 +209,20 @@
   <a class="float-donate" id="float-donate" href="#give"><img src="tango-icon.png" alt="" width="40" height="35">Donate</a>
   <script>
     (function () {
+      // The Instagram embed grows after load and pushes the page down, so a #hash link
+      // (like /#give) lands too early. Re-anchor while it resizes, until the visitor scrolls.
+      var target = location.hash && document.getElementById(location.hash.slice(1));
+      var ig = document.querySelector(".ig");
+      if (!target || !ig || !("ResizeObserver" in window)) return;
+      var ro = new ResizeObserver(function () { target.scrollIntoView({ behavior: "instant" }); });
+      function stop() { ro.disconnect(); }
+      ["wheel", "touchstart", "keydown", "mousedown"].forEach(function (ev) {
+        addEventListener(ev, stop, { once: true, passive: true });
+      });
+      ro.observe(ig);
+      setTimeout(stop, 8000);
+    })();
+    (function () {
       var fab = document.getElementById("float-donate");
       if ("IntersectionObserver" in window) {
         var visible = new Set();
