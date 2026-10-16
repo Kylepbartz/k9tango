@@ -49,6 +49,33 @@
     .thumb img { display: block; width: 100%; height: 100%; object-fit: cover; transition: transform .25s; }
     .thumb:hover img { transform: scale(1.04); }
     .thumb:focus-visible { outline: 3px solid var(--red); outline-offset: 3px; }
+    .msgs { max-width: 680px; margin: 0 auto; }
+    .msgs[hidden], .msgs [hidden] { display: none !important; }
+    .msgs-lead { text-align: center; margin: 0 0 20px; font-size: 18px; }
+    .msg-list { list-style: none; margin: 0 0 8px; padding: 0; display: grid; gap: 12px; }
+    .msg-list li { background: #fff; border-left: 5px solid var(--red); border-radius: 6px; padding: 14px 16px; box-shadow: 0 1px 4px rgba(15, 34, 80, .12); }
+    .msg-list p { margin: 0 0 8px; white-space: pre-wrap; overflow-wrap: anywhere; }
+    .msg-list .who { margin: 0; font-weight: 700; font-size: 15px; letter-spacing: .04em; text-transform: uppercase; }
+    .msg-list .who span { font-weight: 400; text-transform: none; letter-spacing: 0; opacity: .75; }
+    .msg-empty { text-align: center; opacity: .85; margin: 0 0 8px; }
+    .msg-more-wrap { text-align: center; margin: 0 0 8px; }
+    .link-btn { background: none; border: 0; padding: 8px; font: 600 16px/1.2 "Barlow", system-ui, sans-serif; color: var(--navy); text-decoration: underline; cursor: pointer; }
+    .msg-form { margin-top: 28px; background: #fff; border: 2px solid var(--navy); border-bottom: 5px solid var(--red); border-radius: 6px; padding: 20px 18px 22px; }
+    .msg-form h3 { margin: 0 0 14px; font: 400 26px/1.1 "Anton", Impact, sans-serif; letter-spacing: .05em; text-transform: uppercase; }
+    .msg-form .row { margin-bottom: 14px; }
+    .msg-form label { display: block; margin-bottom: 4px; font-weight: 600; font-size: 16px; }
+    .msg-form label small { font-weight: 400; opacity: .7; }
+    .msg-form input[type=text], .msg-form textarea { width: 100%; font: 400 16px/1.4 "Barlow", system-ui, sans-serif; color: var(--ink); background: #fff; border: 2px solid #9aa4bd; border-radius: 6px; padding: 11px 12px; }
+    .msg-form input[type=text]:focus, .msg-form textarea:focus { outline: 3px solid var(--red); outline-offset: 1px; border-color: var(--navy); }
+    .msg-form textarea { resize: vertical; min-height: 120px; }
+    .msg-form .count { text-align: right; font-size: 13px; opacity: .7; margin-top: 2px; }
+    .msg-form .fine { font-size: 14px; opacity: .8; margin: 0 0 16px; }
+    .msg-form .hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+    .msg-form .send { border: 0; cursor: pointer; width: 100%; }
+    .msg-form .send:disabled { opacity: .6; cursor: wait; }
+    .msg-form .status { margin: 14px 0 0; font-weight: 600; text-align: center; min-height: 1.4em; }
+    .msg-form .status.ok { color: #1f6b35; }
+    .msg-form .status.err { color: var(--red); }
     .cta { margin: 48px 0 0; background: var(--navy); color: #fff; text-align: center; padding: 36px 20px 40px; }
     .cta p { margin: 0 auto 18px; max-width: 520px; font-size: 20px; }
     .btn { display: inline-block; text-decoration: none; background: var(--red); color: #fff; font: 400 24px/1 "Anton", Impact, sans-serif; letter-spacing: .08em; text-transform: uppercase; padding: 16px 34px; border-radius: 6px; }
@@ -135,6 +162,38 @@
       <li><button type="button" class="thumb" data-full="/photos/tango-20.jpg" data-alt="Tango resting on a blanket with a bandaged front leg"><img src="/photos/thumbs/tango-20.jpg" alt="Tango resting on a blanket with a bandaged front leg" loading="lazy" width="640" height="419"></button></li>
       </ul>
     </section>
+
+    <!-- Hidden until FORM_ENDPOINT is set in the script below. -->
+    <section class="msgs" id="messages" aria-labelledby="msgs-title" hidden>
+      <h2 id="msgs-title">Messages for Tango</h2>
+      <p class="msgs-lead">Leave a note for Tango and his family. Messages are reviewed before they appear.</p>
+
+      <ul class="msg-list" id="msg-list" aria-live="polite"></ul>
+      <p class="msg-empty" id="msg-empty" hidden>Be the first to leave a message for Tango.</p>
+      <p class="msg-more-wrap"><button type="button" class="link-btn" id="msg-more" hidden>Show more messages</button></p>
+
+      <form class="msg-form" id="msg-form" novalidate>
+        <h3>Write a message</h3>
+        <div class="row">
+          <label for="mf-name">First name <span aria-hidden="true">*</span></label>
+          <input id="mf-name" name="name" type="text" maxlength="40" required autocomplete="given-name">
+        </div>
+        <div class="row">
+          <label for="mf-town">Town or city <small>(optional)</small></label>
+          <input id="mf-town" name="town" type="text" maxlength="40" autocomplete="address-level2">
+        </div>
+        <div class="row">
+          <label for="mf-text">Your message <span aria-hidden="true">*</span></label>
+          <textarea id="mf-text" name="message" rows="5" maxlength="400" required></textarea>
+          <div class="count" id="mf-count" aria-hidden="true">0 / 400</div>
+        </div>
+        <!-- Spam trap: real visitors never see or fill this in. -->
+        <div class="hp" aria-hidden="true"><label>Leave this empty <input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
+        <p class="fine">Only your first name and town are shown. Please don&rsquo;t include phone numbers, emails or other personal details.</p>
+        <button type="submit" class="btn send" id="mf-send">Send message</button>
+        <p class="status" id="mf-status" role="status" aria-live="polite"></p>
+      </form>
+    </section>
   </main>
 
   <section class="cta">
@@ -195,6 +254,75 @@
         var dx = e.changedTouches[0].clientX - startX; startX = null;
         if (Math.abs(dx) > 50) show(i + (dx < 0 ? 1 : -1));
       }, { passive: true });
+    })();
+  </script>
+  <script>
+    // Messages for Tango: approved messages live in /messages.json; new ones are emailed to you
+    // through a form service (e.g. Formspree) and only appear after you add them to that file.
+    (function () {
+      var FORM_ENDPOINT = ""; // paste your Formspree URL here, e.g. "https://formspree.io/f/xxxxxxxx"
+      if (!FORM_ENDPOINT) return; // section stays hidden until the form is connected
+
+      var section = document.getElementById("messages");
+      var list = document.getElementById("msg-list");
+      var empty = document.getElementById("msg-empty");
+      var more = document.getElementById("msg-more");
+      var form = document.getElementById("msg-form");
+      var send = document.getElementById("mf-send");
+      var status = document.getElementById("mf-status");
+      var text = document.getElementById("mf-text");
+      var count = document.getElementById("mf-count");
+      var PAGE = 10, shown = 0, all = [], loaded = Date.now();
+      section.hidden = false;
+
+      function str(v, max) { return typeof v === "string" ? v.slice(0, max) : ""; }
+      function showMore() {
+        all.slice(shown, shown + PAGE).forEach(function (m) {
+          var li = document.createElement("li");
+          var p = document.createElement("p");
+          p.textContent = m.message;
+          var who = document.createElement("p");
+          who.className = "who";
+          who.textContent = m.name;
+          if (m.town) { var t = document.createElement("span"); t.textContent = " · " + m.town; who.appendChild(t); }
+          li.appendChild(p); li.appendChild(who); list.appendChild(li);
+        });
+        shown = Math.min(all.length, shown + PAGE);
+        more.hidden = shown >= all.length;
+      }
+      fetch("/messages.json", { cache: "no-cache" })
+        .then(function (r) { return r.ok ? r.json() : []; })
+        .catch(function () { return []; })
+        .then(function (data) {
+          all = (Array.isArray(data) ? data : []).map(function (m) {
+            return { name: str(m && m.name, 40), town: str(m && m.town, 40), message: str(m && m.message, 400) };
+          }).filter(function (m) { return m.name && m.message; });
+          empty.hidden = all.length > 0;
+          showMore();
+        });
+      more.addEventListener("click", showMore);
+
+      text.addEventListener("input", function () { count.textContent = text.value.length + " / 400"; });
+
+      function say(msg, cls) { status.textContent = msg; status.className = "status " + (cls || ""); }
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+        var fd = new FormData(form);
+        var name = (fd.get("name") || "").trim(), message = (fd.get("message") || "").trim();
+        if (!name || !message) { say("Please add your first name and a message.", "err"); return; }
+        if (fd.get("website")) { say("Thank you! Your message will appear after it is reviewed.", "ok"); form.reset(); return; } // bot
+        if (Date.now() - loaded < 3000) { say("Please take a moment to write your message, then send it again.", "err"); return; }
+        fd.append("_subject", "New message for Tango");
+        send.disabled = true; say("Sending…");
+        fetch(FORM_ENDPOINT, { method: "POST", body: fd, headers: { Accept: "application/json" } })
+          .then(function (r) {
+            if (!r.ok) throw new Error("bad status");
+            form.reset(); count.textContent = "0 / 400";
+            say("Thank you! Your message will appear after it is reviewed.", "ok");
+          })
+          .catch(function () { say("Sorry, that didn’t send. Please try again in a moment.", "err"); })
+          .then(function () { send.disabled = false; });
+      });
     })();
   </script>
 </body>
