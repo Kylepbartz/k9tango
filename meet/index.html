@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Meet Tango, Police K9</title>
+  <meta name="description" content="Meet Tango, a retired police K9 who served Menomonee Falls, Wisconsin from 2020 to 2026. See his service record and photos.">
+  <link rel="canonical" href="https://k9tango.com/meet/">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://k9tango.com/meet/">
+  <meta property="og:title" content="Meet Tango, Police K9">
+  <meta property="og:description" content="Retired police K9 Tango served Menomonee Falls, Wisconsin. See his story and photos.">
+  <meta property="og:image" content="https://k9tango.com/tango.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="theme-color" content="#0f2250">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Yellowtail&family=Barlow:wght@400;600;700&display=swap">
+  <style>
+    :root { --navy: #0f2250; --red: #c8202f; --paper: #faf8f4; --ink: #0f2250; }
+    * { box-sizing: border-box; }
+    html { -webkit-text-size-adjust: 100%; }
+    body { margin: 0; background: var(--paper); color: var(--ink); font: 18px/1.5 "Barlow", system-ui, -apple-system, "Segoe UI", sans-serif; }
+    body.lock { overflow: hidden; }
+    a { color: var(--navy); }
+    .wrap { max-width: 1040px; margin: 0 auto; padding: 0 20px; }
+    .topbar { background: var(--navy); color: #fff; }
+    .topbar .wrap { display: flex; align-items: center; justify-content: space-between; min-height: 56px; }
+    .topbar a { color: #fff; text-decoration: none; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; font-size: 14px; }
+    .topbar a:hover { text-decoration: underline; }
+    .topbar .give { background: var(--red); padding: 9px 18px; border-radius: 999px; }
+    .topbar .give:hover { text-decoration: none; filter: brightness(1.1); }
+    .head { text-align: center; padding: 36px 0 8px; }
+    h1 { font: 400 clamp(64px, 18vw, 120px)/0.92 "Anton", Impact, sans-serif; text-transform: uppercase; letter-spacing: .01em; margin: 0; }
+    .script { font: 400 clamp(36px, 10vw, 58px)/1 "Yellowtail", cursive; margin: -2px 0 0; }
+    .rule { display: flex; align-items: center; gap: 12px; margin: 14px auto 18px; max-width: 360px; }
+    .rule::before, .rule::after { content: ""; flex: 1; height: 3px; background: var(--red); }
+    .lead { max-width: 640px; margin: 0 auto; font-size: 20px; text-align: center; }
+    .facts { list-style: none; margin: 32px 0 0; padding: 0; display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+    .facts li { background: #fff; border: 2px solid var(--navy); border-bottom: 5px solid var(--red); border-radius: 6px; padding: 14px 12px; text-align: center; }
+    .facts b { display: block; font: 400 clamp(24px, 6vw, 32px)/1.1 "Anton", Impact, sans-serif; letter-spacing: .04em; text-transform: uppercase; }
+    .facts span { display: block; margin-top: 4px; font-size: 13px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; opacity: .85; }
+    .story { max-width: 680px; margin: 36px auto 0; text-align: center; }
+    .story p { margin: 0 0 14px; font-size: 20px; }
+    h2 { font: 400 clamp(36px, 10vw, 52px)/1.1 "Yellowtail", cursive; text-align: center; margin: 44px 0 16px; }
+    .gallery { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+    .thumb { display: block; width: 100%; padding: 0; border: 0; border-radius: 6px; overflow: hidden; cursor: zoom-in; background: #ddd; aspect-ratio: 3 / 2; }
+    .thumb img { display: block; width: 100%; height: 100%; object-fit: cover; transition: transform .25s; }
+    .thumb:hover img { transform: scale(1.04); }
+    .thumb:focus-visible { outline: 3px solid var(--red); outline-offset: 3px; }
+    .cta { margin: 48px 0 0; background: var(--navy); color: #fff; text-align: center; padding: 36px 20px 40px; }
+    .cta p { margin: 0 auto 18px; max-width: 520px; font-size: 20px; }
+    .btn { display: inline-block; text-decoration: none; background: var(--red); color: #fff; font: 400 24px/1 "Anton", Impact, sans-serif; letter-spacing: .08em; text-transform: uppercase; padding: 16px 34px; border-radius: 6px; }
+    .btn:hover { filter: brightness(1.1); }
+    .btn:focus-visible { outline: 3px solid #fff; outline-offset: 3px; }
+    footer { background: var(--navy); color: #fff; text-align: center; padding: 18px 16px 22px; font-weight: 600; letter-spacing: .24em; font-size: 13px; text-transform: uppercase; border-top: 1px solid rgba(255,255,255,.2); }
+
+    .lb { position: fixed; inset: 0; z-index: 50; background: rgba(6, 12, 30, .94); display: none; align-items: center; justify-content: center; padding: 56px 12px 48px; }
+    .lb.open { display: flex; }
+    .lb img { max-width: 100%; max-height: 100%; object-fit: contain; border-radius: 4px; touch-action: pan-y; }
+    .lb button { position: absolute; background: rgba(255,255,255,.12); color: #fff; border: 0; border-radius: 999px; width: 48px; height: 48px; font-size: 26px; line-height: 1; cursor: pointer; }
+    .lb button:hover { background: rgba(255,255,255,.25); }
+    .lb button:focus-visible { outline: 3px solid #fff; outline-offset: 2px; }
+    .lb .close { top: 8px; right: 8px; }
+    .lb .prev { left: 8px; top: 50%; transform: translateY(-50%); }
+    .lb .next { right: 8px; top: 50%; transform: translateY(-50%); }
+    .lb .count { position: absolute; bottom: 14px; left: 0; right: 0; text-align: center; color: #fff; font-size: 14px; letter-spacing: .12em; }
+
+    @media (min-width: 720px) {
+      .facts { grid-template-columns: repeat(3, 1fr); }
+      .gallery { grid-template-columns: repeat(3, 1fr); gap: 14px; }
+    }
+    @media (min-width: 960px) {
+      .facts { grid-template-columns: repeat(6, 1fr); }
+      .lb { padding: 64px 72px 56px; }
+    }
+    @media (prefers-reduced-motion: reduce) { .thumb img { transition: none; } }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a href="/">&larr; Tango&rsquo;s page</a>
+      <a class="give" href="/#give">Donate</a>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div class="head">
+      <h1>Meet Tango</h1>
+      <p class="script">Police K9</p>
+      <div class="rule" aria-hidden="true">&#9733;</div>
+      <p class="lead">Tango is a retired police K9 who served and protected the community of Menomonee Falls, Wisconsin.</p>
+    </div>
+
+    <ul class="facts">
+      <li><b>Menomonee Falls</b><span>Police Department</span></li>
+      <li><b style="white-space:nowrap">2020&ndash;2026</b><span>Years of service</span></li>
+      <li><b>Patrol + Narcotics</b><span>Dual-purpose K9</span></li>
+      <li><b>350+</b><span>Deployments</span></li>
+      <li><b>Oct 9, 2026</b><span>Retired</span></li>
+      <li><b>Project K-9 Hero</b><span>Pack member</span></li>
+    </ul>
+
+    <section class="story">
+      <h2>His story</h2>
+      <p>Tango served the Menomonee Falls Police Department from 2020 until October 2026. As a dual-purpose patrol and narcotics detection K9, he worked more than 350 deployments, including narcotic sniffs, tracks, building searches, article finds and apprehensions in Menomonee Falls and surrounding communities.</p>
+      <p>Away from the call-outs, Tango was an ambassador for the department. Every year he took part in dozens of community presentations and outreach events.</p>
+      <p>He is now a member of <a href="https://projectk9hero.org" target="_blank" rel="noopener">Project K-9 Hero</a>, the national nonprofit that helps retired police K9s with medical care.</p>
+    </section>
+
+    <section aria-labelledby="photos-title">
+      <h2 id="photos-title">Photos</h2>
+      <ul class="gallery" id="gallery">
+      <li><button type="button" class="thumb" data-full="/photos/tango-01.jpg" data-alt="Tango in front of an American flag, tongue out, wearing his badge collar"><img src="/photos/thumbs/tango-01.jpg" alt="Tango in front of an American flag, tongue out, wearing his badge collar" loading="lazy" width="640" height="419"></button></li>
+      <li><button type="button" class="thumb" data-full="/photos/tango-02.jpg" data-alt="Tango bounding through shallow water beside his handler"><img src="/photos/thumbs/tango-02.jpg" alt="Tango bounding through shallow water beside his handler" loading="lazy" width="640" height="419"></button></li>
+      <li><button type="button" class="thumb" data-full="/photos/tango-04.jpg" data-alt="Close-up of Tango asleep among plush blankets and toys"><img src="/photos/thumbs/tango-04.jpg" alt="Close-up of Tango asleep among plush blankets and toys" loading="lazy" width="640" height="419"></button></li>
+      <li><button type="button" class="thumb" data-full="/photos/tango-05.jpg" data-alt="Tango curled up on a fluffy bed next to a stuffed fox"><img src="/photos/thumbs/tango-05.jpg" alt="Tango curled up on a fluffy bed next to a stuffed fox" loading="lazy" width="640" height="419"></button></li>
+      <li><button type="button" class="thumb" data-full="/photos/tango-06.jpg" data-alt="Tango with his handler, Officer Mike Schroeder, in front of a stone wall"><img src="/photos/thumbs/tango-06.jpg" alt="Tango with his handler, Officer Mike Schroeder, in front of a stone wall" loading="lazy" width="640" height="419"></button></li>
+      <li><button type="button" class="thumb" data-full="/photos/tango-07.jpg" data-alt="Tango in his police vest, standing on a log"><img src="/photos/thumbs/tango-07.jpg" alt="Tango in his police vest, standing on a log" loading="lazy" width="640" height="419"></button></li>
+      <li><button type="button" class="thumb" data-full="/photos/tango-08.jpg" data-alt="Tango sitting beside an officer on a football field"><img src="/photos/thumbs/tango-08.jpg" alt="Tango sitting beside an officer on a football field" loading="lazy" width="640" height="419"></button></li>
+      <li><button type="button" class="thumb" data-full="/photos/tango-10.jpg" data-alt="Tango lying in autumn leaves with a red ball while a young fan kisses his head"><img src="/photos/thumbs/tango-10.jpg" alt="Tango lying in autumn leaves with a red ball while a young fan kisses his head" loading="lazy" width="640" height="419"></button></li>
+      <li><button type="button" class="thumb" data-full="/photos/tango-11.jpg" data-alt="Close-up of Tango's face in a birthday bandana"><img src="/photos/thumbs/tango-11.jpg" alt="Close-up of Tango's face in a birthday bandana" loading="lazy" width="640" height="419"></button></li>
+      <li><button type="button" class="thumb" data-full="/photos/tango-12.jpg" data-alt="Tango resting his head on a pillow"><img src="/photos/thumbs/tango-12.jpg" alt="Tango resting his head on a pillow" loading="lazy" width="640" height="419"></button></li>
+      <li><button type="button" class="thumb" data-full="/photos/tango-13.jpg" data-alt="Tango working through a small agility course of orange cones"><img src="/photos/thumbs/tango-13.jpg" alt="Tango working through a small agility course of orange cones" loading="lazy" width="640" height="419"></button></li>
+      <li><button type="button" class="thumb" data-full="/photos/tango-14.jpg" data-alt="Tango resting his head on a stuffed animal"><img src="/photos/thumbs/tango-14.jpg" alt="Tango resting his head on a stuffed animal" loading="lazy" width="640" height="419"></button></li>
+      <li><button type="button" class="thumb" data-full="/photos/tango-15.jpg" data-alt="Portrait of Tango with ears up and tongue out"><img src="/photos/thumbs/tango-15.jpg" alt="Portrait of Tango with ears up and tongue out" loading="lazy" width="640" height="419"></button></li>
+      <li><button type="button" class="thumb" data-full="/photos/tango-16.jpg" data-alt="Tango standing in front of tactical gear"><img src="/photos/thumbs/tango-16.jpg" alt="Tango standing in front of tactical gear" loading="lazy" width="640" height="419"></button></li>
+      <li><button type="button" class="thumb" data-full="/photos/tango-17.jpg" data-alt="Tango lying in the grass in his vest"><img src="/photos/thumbs/tango-17.jpg" alt="Tango lying in the grass in his vest" loading="lazy" width="640" height="419"></button></li>
+      <li><button type="button" class="thumb" data-full="/photos/tango-18.jpg" data-alt="Tango running across a lawn"><img src="/photos/thumbs/tango-18.jpg" alt="Tango running across a lawn" loading="lazy" width="640" height="419"></button></li>
+      <li><button type="button" class="thumb" data-full="/photos/tango-19.jpg" data-alt="Close-up of Tango with his tongue out"><img src="/photos/thumbs/tango-19.jpg" alt="Close-up of Tango with his tongue out" loading="lazy" width="640" height="419"></button></li>
+      <li><button type="button" class="thumb" data-full="/photos/tango-20.jpg" data-alt="Tango resting on a blanket with a bandaged front leg"><img src="/photos/thumbs/tango-20.jpg" alt="Tango resting on a blanket with a bandaged front leg" loading="lazy" width="640" height="419"></button></li>
+      </ul>
+    </section>
+  </main>
+
+  <section class="cta">
+    <p>Tango gave his best for our community. Help give him his best care.</p>
+    <a class="btn" href="/#give">Help Tango</a>
+  </section>
+
+  <footer>Thank you for supporting Tango</footer>
+
+  <div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Photo viewer" hidden>
+    <button type="button" class="close" aria-label="Close">&times;</button>
+    <button type="button" class="prev" aria-label="Previous photo">&lsaquo;</button>
+    <img id="lb-img" alt="">
+    <button type="button" class="next" aria-label="Next photo">&rsaquo;</button>
+    <div class="count" id="lb-count" aria-live="polite"></div>
+  </div>
+
+  <script>
+    (function () {
+      var thumbs = Array.prototype.slice.call(document.querySelectorAll(".thumb"));
+      var lb = document.getElementById("lb"), img = document.getElementById("lb-img"), count = document.getElementById("lb-count");
+      var i = 0, opener = null, startX = null;
+
+      function show(n) {
+        i = (n + thumbs.length) % thumbs.length;
+        img.src = thumbs[i].dataset.full;
+        img.alt = thumbs[i].dataset.alt;
+        count.textContent = (i + 1) + " / " + thumbs.length;
+        [i + 1, i - 1].forEach(function (k) { new Image().src = thumbs[(k + thumbs.length) % thumbs.length].dataset.full; });
+      }
+      function open(n, from) {
+        opener = from; lb.hidden = false; lb.classList.add("open"); document.body.classList.add("lock");
+        show(n); lb.querySelector(".close").focus();
+      }
+      function close() {
+        lb.classList.remove("open"); lb.hidden = true; document.body.classList.remove("lock");
+        if (opener) opener.focus();
+      }
+      thumbs.forEach(function (t, n) { t.addEventListener("click", function () { open(n, t); }); });
+      lb.querySelector(".close").addEventListener("click", close);
+      lb.querySelector(".prev").addEventListener("click", function () { show(i - 1); });
+      lb.querySelector(".next").addEventListener("click", function () { show(i + 1); });
+      lb.addEventListener("click", function (e) { if (e.target === lb) close(); });
+      document.addEventListener("keydown", function (e) {
+        if (!lb.classList.contains("open")) return;
+        if (e.key === "Escape") close();
+        else if (e.key === "ArrowLeft") show(i - 1);
+        else if (e.key === "ArrowRight") show(i + 1);
+        else if (e.key === "Tab") {
+          var f = lb.querySelectorAll("button"), first = f[0], last = f[f.length - 1];
+          if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+          else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+        }
+      });
+      img.addEventListener("touchstart", function (e) { startX = e.changedTouches[0].clientX; }, { passive: true });
+      img.addEventListener("touchend", function (e) {
+        if (startX === null) return;
+        var dx = e.changedTouches[0].clientX - startX; startX = null;
+        if (Math.abs(dx) > 50) show(i + (dx < 0 ? 1 : -1));
+      }, { passive: true });
+    })();
+  </script>
+</body>
+</html>
