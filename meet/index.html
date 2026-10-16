@@ -56,6 +56,7 @@
     .btn:focus-visible { outline: 3px solid #fff; outline-offset: 3px; }
     footer { background: var(--navy); color: #fff; text-align: center; padding: 18px 16px 22px; font-weight: 600; letter-spacing: .24em; font-size: 13px; text-transform: uppercase; border-top: 1px solid rgba(255,255,255,.2); }
 
+    footer small { display: block; margin-top: 10px; font-weight: 400; letter-spacing: .02em; text-transform: none; font-size: 13px; line-height: 1.4; opacity: .8; }
     .lb { position: fixed; inset: 0; z-index: 50; background: rgba(6, 12, 30, .94); display: none; align-items: center; justify-content: center; padding: 56px 12px 48px; }
     .lb.open { display: flex; }
     .lb img { max-width: 100%; max-height: 100%; object-fit: contain; border-radius: 4px; touch-action: pan-y; }
@@ -141,7 +142,7 @@
     <a class="btn" href="/?to=give">Help Tango</a>
   </section>
 
-  <footer>Thank you for supporting Tango</footer>
+  <footer>Thank you for supporting Tango<small>This is a community fundraising page and is not an official page of the Menomonee Falls Police Department.</small></footer>
 
   <div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Photo viewer" hidden>
     <button type="button" class="close" aria-label="Close">&times;</button>
