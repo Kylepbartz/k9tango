@@ -80,6 +80,9 @@
     .pk9h .ein { font-size: 14px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; margin-bottom: 16px; }
     .btn.alt { background: transparent; color: var(--navy); border: 2px solid var(--navy); border-bottom-width: 5px; border-bottom-color: var(--red); }
     .btn.alt:hover { background: var(--navy); color: #fff; filter: none; }
+    .btn.alt { display: flex; align-items: center; justify-content: center; gap: 16px; }
+    .btn.alt img { width: 68px; height: 68px; flex: none; border-radius: 50%; background: #fff; }
+    .btn.alt .btn-text { min-width: 0; }
     html { scroll-behavior: smooth; }
     @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
     .float-donate {
@@ -182,8 +185,11 @@
       <p><a href="https://www.facebook.com/share/1J2rSTciTc/" target="_blank" rel="noopener">Read the full announcement</a></p>
       <p class="ein">EIN 81-1770909</p>
       <a class="btn alt" href="https://projectk9hero.org" target="_blank" rel="noopener">
-        <b>Visit Project K-9 Hero</b>
-        <span>projectk9hero.org</span>
+        <img src="/photos/pk9h-logo.png" alt="" width="200" height="200">
+        <div class="btn-text">
+          <b>Visit Project K-9 Hero</b>
+          <span>projectk9hero.org</span>
+        </div>
       </a>
     </section>
 
