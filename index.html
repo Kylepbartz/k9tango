@@ -66,6 +66,17 @@
     .btn span { display: block; font-size: 15px; letter-spacing: .08em; text-transform: uppercase; opacity: .9; margin-top: 4px; }
     .btn:hover { filter: brightness(1.25); }
     .btn:focus-visible { outline: 3px solid var(--red); outline-offset: 3px; }
+    .share { padding: 12px 20px 0; text-align: center; }
+    .share h2 { font: 400 clamp(34px, 10vw, 44px)/1.1 "Yellowtail", cursive; margin: 0 0 12px; }
+    .share-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+    .share-btn {
+      font: 600 15px/1.2 "Barlow", system-ui, sans-serif; letter-spacing: .06em; text-transform: uppercase;
+      color: var(--navy); background: transparent; border: 2px solid var(--navy); border-radius: 6px;
+      padding: 14px 8px; min-height: 48px; text-decoration: none; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .share-btn:hover { background: var(--navy); color: #fff; }
+    .share-btn:focus-visible { outline: 3px solid var(--red); outline-offset: 3px; }
     footer {
       background: var(--navy); color: #fff; text-align: center; margin-top: 28px;
       padding: 22px 16px; font-weight: 600; letter-spacing: .24em; font-size: 14px; text-transform: uppercase;
@@ -105,7 +116,37 @@
       </a>
     </div>
 
+    <section class="share" aria-labelledby="share-title">
+      <h2 id="share-title">Share Tango&rsquo;s story</h2>
+      <div class="share-row">
+        <a class="share-btn" id="share-fb" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fk9tango.com" target="_blank" rel="noopener">Facebook</a>
+        <a class="share-btn" id="share-sms" href="sms:?&body=Help%20retired%20police%20K9%20Tango%20fight%20cancer.%20https%3A%2F%2Fk9tango.com">Text</a>
+        <button class="share-btn" id="share-copy" type="button" aria-live="polite">Copy link</button>
+      </div>
+    </section>
+
     <footer>Thank you for supporting Tango</footer>
   </main>
+  <script>
+    (function () {
+      var url = "https://k9tango.com";
+      var btn = document.getElementById("share-copy");
+      btn.addEventListener("click", function () {
+        function done(ok) {
+          btn.textContent = ok ? "Link copied!" : "Copy failed";
+          setTimeout(function () { btn.textContent = "Copy link"; }, 2000);
+        }
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(url).then(function () { done(true); }, function () { done(false); });
+        } else {
+          var t = document.createElement("textarea");
+          t.value = url; document.body.appendChild(t); t.select();
+          var ok = false;
+          try { ok = document.execCommand("copy"); } catch (e) {}
+          document.body.removeChild(t); done(ok);
+        }
+      });
+    })();
+  </script>
 </body>
 </html>
