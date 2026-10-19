@@ -175,8 +175,8 @@
       <form class="msg-form" id="msg-form" novalidate>
         <h3>Write a message</h3>
         <div class="row">
-          <label for="mf-name">First name <span aria-hidden="true">*</span></label>
-          <input id="mf-name" name="name" type="text" maxlength="40" required autocomplete="given-name">
+          <label for="mf-name">First name <small>(optional)</small></label>
+          <input id="mf-name" name="name" type="text" maxlength="40" autocomplete="given-name" placeholder="Leave blank to stay anonymous">
         </div>
         <div class="row">
           <label for="mf-town">Town or city <small>(optional)</small></label>
@@ -189,7 +189,7 @@
         </div>
         <!-- Spam trap: real visitors never see or fill this in. -->
         <div class="hp" aria-hidden="true"><label>Leave this empty <input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
-        <p class="fine">Only your first name and town are shown. Please don&rsquo;t include phone numbers, emails or other personal details.</p>
+        <p class="fine">Only your first name (or &ldquo;Anonymous&rdquo;) and town are shown. Please don&rsquo;t include phone numbers, emails or other personal details.</p>
         <button type="submit" class="btn send" id="mf-send">Send message</button>
         <p class="status" id="mf-status" role="status" aria-live="polite"></p>
       </form>
@@ -309,7 +309,8 @@
         e.preventDefault();
         var fd = new FormData(form);
         var name = (fd.get("name") || "").trim(), message = (fd.get("message") || "").trim();
-        if (!name || !message) { say("Please add your first name and a message.", "err"); return; }
+        if (!message) { say("Please write a message.", "err"); return; }
+        fd.set("name", name || "Anonymous");
         if (fd.get("website")) { say("Thank you! Your message will appear after it is reviewed.", "ok"); form.reset(); return; } // bot
         if (Date.now() - loaded < 3000) { say("Please take a moment to write your message, then send it again.", "err"); return; }
         fd.append("_subject", "New message for Tango");
