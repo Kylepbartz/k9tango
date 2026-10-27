@@ -56,9 +56,6 @@
     }
     .banner .big { font: 400 clamp(40px, 12vw, 58px)/1.05 "Yellowtail", cursive; margin: 0; }
     .banner .small { margin: 8px 0 0; font-weight: 600; letter-spacing: .14em; font-size: 13px; text-transform: uppercase; }
-    .actions { padding: 26px 20px 8px; display: grid; gap: 14px; }
-    .actions .btn { width: 80%; max-width: 360px; margin: 0 auto; }
-    .actions-label { margin: 0; text-align: center; font: 600 14px/1.2 "Barlow", system-ui, sans-serif; letter-spacing: .16em; text-transform: uppercase; }
     .btn {
       display: block; text-decoration: none; text-align: center; color: #fff;
       background: var(--navy); border-radius: 6px; padding: 18px 16px; min-height: 76px;
@@ -74,7 +71,6 @@
     .story .meet a { display: inline-flex; align-items: center; gap: 12px; text-decoration: none; text-align: left; }
     .story .meet a span { text-decoration: underline; text-underline-offset: 3px; }
     .story .meet img { width: 52px; height: auto; flex: none; filter: drop-shadow(0 3px 5px rgba(15, 34, 80, .3)); }
-    .ig { padding: 26px 12px 0; }
     .pk9h { padding: 26px 20px 8px; text-align: center; }
     .pk9h h2 { font: 400 clamp(30px, 9vw, 40px)/1.1 "Yellowtail", cursive; margin: 0 0 10px; }
     .pk9h p { margin: 0 0 8px; font-size: 17px; }
@@ -136,15 +132,11 @@
       .banner { grid-column: full-start / full-end; grid-row: 3; margin-top: 40px; padding: 34px 20px 30px; }
       .banner .big { font-size: 64px; }
       .banner .small { font-size: 15px; }
-      .ig { grid-column: c-start / mid; grid-row: 4 / 6; align-self: start; padding: 40px 28px 0 0; }
-      .pk9h { grid-column: mid / c-end; grid-row: 4; padding: 40px 0 8px 28px; }
+      .pk9h { grid-column: c-start / c-end; grid-row: 4; justify-self: center; width: 100%; max-width: 680px; padding: 48px 0 8px; }
       .pk9h h2 { font-size: 44px; }
       .pk9h p { font-size: 18px; }
-      .actions { grid-column: mid / c-end; grid-row: 5; align-self: start; padding: 18px 0 8px 28px; grid-template-columns: 1fr 1fr; gap: 14px; }
-      .actions-label { grid-column: 1 / -1; }
-      .actions .btn { width: 100%; max-width: none; margin: 0; }
-      .share { grid-column: c-start / c-end; grid-row: 6; justify-self: center; width: 100%; max-width: 520px; padding-top: 36px; }
-      footer { grid-column: full-start / full-end; grid-row: 7; margin-top: 48px; }
+      .share { grid-column: c-start / c-end; grid-row: 5; justify-self: center; width: 100%; max-width: 520px; padding-top: 36px; }
+      footer { grid-column: full-start / full-end; grid-row: 6; margin-top: 48px; }
       .float-donate { right: 28px; bottom: 28px; }
     }
   </style>
@@ -173,12 +165,6 @@
       <p class="small">His service &nbsp;|&nbsp; His loyalty &nbsp;|&nbsp; His legacy</p>
     </div>
 
-    <section class="ig" aria-label="Instagram post about Tango">
-      <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DehFtbpFkQn/" data-instgrm-version="14" style="background:#fff; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin:0 auto; max-width:540px; min-width:280px; padding:0; width:100%;">
-        <a href="https://www.instagram.com/p/DehFtbpFkQn/" target="_blank" rel="noopener">View this post on Instagram</a>
-      </blockquote>
-      <script async src="https://www.instagram.com/embed.js"></script>
-    </section>
 
     <section class="pk9h" id="give" aria-labelledby="pk9h-title">
       <h2 id="pk9h-title">Give in Tango&rsquo;s memory</h2>
@@ -211,40 +197,14 @@
   <a class="float-donate" id="float-donate" href="#give"><img src="tango-icon.png" alt="" width="40" height="35">Donate</a>
   <script>
     (function () {
-      // The Instagram embed grows after load and pushes the page down, so a #hash link
-      // (like /#give) lands too early. Re-anchor while it resizes, until the visitor scrolls.
-      var target = location.hash && document.getElementById(location.hash.slice(1));
-      var ig = document.querySelector(".ig");
-      if (!target || !ig || !("ResizeObserver" in window)) return;
-      var ro = new ResizeObserver(function () { target.scrollIntoView({ behavior: "instant" }); });
-      function stop() { ro.disconnect(); }
-      ["wheel", "touchstart", "keydown", "mousedown"].forEach(function (ev) {
-        addEventListener(ev, stop, { once: true, passive: true });
-      });
-      ro.observe(ig);
-      setTimeout(stop, 8000);
-    })();
-    (function () {
       // /?to=give loads the page at the top, then scrolls down to that section.
       var id = new URLSearchParams(location.search).get("to");
       var target = id && document.getElementById(id);
       if (!target) return;
       history.replaceState(null, "", location.pathname);
       var behavior = matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth";
-      var ig = document.querySelector(".ig");
-      var ro = null;
       function go() { target.scrollIntoView({ behavior: behavior }); }
-      function stop() { if (ro) ro.disconnect(); }
-      ["wheel", "touchstart", "keydown", "mousedown"].forEach(function (ev) {
-        addEventListener(ev, stop, { once: true, passive: true });
-      });
       setTimeout(go, 700);
-      // The Instagram embed grows after load and shifts the target, so re-aim while it resizes.
-      if (ig && "ResizeObserver" in window) {
-        ro = new ResizeObserver(function () { if (ig.offsetHeight > 200) go(); });
-        ro.observe(ig);
-        setTimeout(stop, 8000);
-      }
     })();
     (function () {
       var fab = document.getElementById("float-donate");
@@ -254,7 +214,7 @@
           entries.forEach(function (e) { e.isIntersecting ? visible.add(e.target) : visible.delete(e.target); });
           fab.classList.toggle("hide", visible.size > 0);
         });
-        document.querySelectorAll(".pk9h, .actions, .share, footer").forEach(function (el) { io.observe(el); });
+        document.querySelectorAll(".pk9h, .share, footer").forEach(function (el) { io.observe(el); });
       }
     })();
     (function () {
