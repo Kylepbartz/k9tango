@@ -63,6 +63,14 @@
     .actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 10px; }
     .chip { display: inline-block; text-decoration: none; font: 700 16px/1 "Barlow", system-ui, sans-serif; letter-spacing: .04em; text-transform: uppercase; color: var(--navy); background: #fff; border: 2px solid var(--navy); border-radius: 999px; padding: 11px 16px; }
     .chip:hover { background: var(--navy); color: #fff; }
+    .countdown { margin: 2px 0 0; font: 700 15px/1.3 "Barlow", system-ui, sans-serif; letter-spacing: .08em; text-transform: uppercase; color: var(--navy); opacity: .85; }
+    .cant { margin: 22px auto 0; max-width: 560px; font-size: 18px; }
+    .cant a { color: var(--navy); font-weight: 700; }
+    .invite-share { margin: 26px 0 0; }
+    .invite-share h2 { margin: 0; font: 500 15px/1.2 "Cinzel", Georgia, serif; letter-spacing: .06em; }
+    .invite-share .actions { justify-content: center; }
+    button.chip { cursor: pointer; }
+    .share-status { min-height: 1.4em; margin: 8px 0 0; font-weight: 700; font-size: 15px; }
     .pets { margin: 22px 0 0; font: 400 clamp(30px, 7vw, 40px)/1.1 "Yellowtail", cursive; }
 
     .cta { margin: 34px 0 0; display: grid; gap: 12px; justify-items: center; }
@@ -117,8 +125,9 @@
       <div class="when">
         <h2>Celebration of Life</h2>
         <p class="big">November 10th</p>
+        <p class="countdown" id="countdown" hidden></p>
         <p class="time">3:00 PM &ndash; 8:00 PM</p>
-        <div class="actions"><a class="chip" href="/tango-celebration-of-life.ics" download>Add to calendar</a></div>
+        <div class="actions"><a class="chip" href="https://calendar.google.com/calendar/render?action=TEMPLATE&amp;text=Tango+Celebration+of+Life&amp;dates=20261110T150000/20261110T200000&amp;ctz=America/Chicago&amp;location=Hounds+and+Tap,+Menomonee+Falls,+WI&amp;details=Please+help+us+in+honoring+and+remembering+Tango.+Pets+are+welcome.+https://k9tango.com" target="_blank" rel="noopener">Google Calendar</a><a class="chip" href="/tango-celebration-of-life.ics" download>Apple / Outlook</a></div>
       </div>
       <div class="where">
         <h2>Location</h2>
@@ -129,6 +138,18 @@
     </section>
     <p class="pets">Pets are welcome. &#128062;</p>
 
+    <p class="cant">Can&rsquo;t make it? You can still <a href="/meet/#messages">leave a message for Tango&rsquo;s family</a> or <a href="/memorial/?to=give">give in his memory</a>.</p>
+
+    <section class="invite-share" aria-label="Invite a friend">
+      <h2 class="caps">Invite a friend</h2>
+      <div class="actions">
+        <a class="chip" id="share-fb" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fk9tango.com" target="_blank" rel="noopener">Facebook</a>
+        <a class="chip" id="share-sms" href="sms:?&amp;body=Join%20us%20to%20celebrate%20Tango%27s%20life%3A%20Nov%2010%2C%203%E2%80%938%20PM%20at%20Hounds%20and%20Tap%2C%20Menomonee%20Falls.%20Pets%20are%20welcome.%20https%3A%2F%2Fk9tango.com">Text</a>
+        <button class="chip" type="button" id="share-copy">Copy link</button>
+      </div>
+      <p class="share-status" id="share-status" role="status" aria-live="polite"></p>
+    </section>
+
     <div class="cta">
       <a class="btn main" href="/memorial/">Remember Tango</a>
       <a class="btn alt" href="/memorial/?to=give">Give in his memory</a>
@@ -137,6 +158,22 @@
     <footer>This is a community tribute page and is not an official page of the Menomonee Falls Police Department.</footer>
   </main>
   <script>
+    (function () {
+      // "X days to go" until Nov 10; hidden once the day has passed.
+      var el = document.getElementById("countdown");
+      var now = new Date(), today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+      var days = Math.round((new Date(2026, 10, 10) - today) / 864e5);
+      var text = days > 1 ? days + " days to go" : days === 1 ? "Tomorrow" : days === 0 ? "Today" : "";
+      if (text) { el.textContent = text; el.hidden = false; }
+
+      var copy = document.getElementById("share-copy"), status = document.getElementById("share-status");
+      copy.addEventListener("click", function () {
+        function done(ok) { status.textContent = ok ? "Link copied!" : "Copy this link: https://k9tango.com"; }
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText("https://k9tango.com").then(function () { done(true); }, function () { done(false); });
+        } else { done(false); }
+      });
+    })();
     // The event is over after Nov 11, so send visitors straight to the memorial from then on.
     if (Date.now() >= new Date(2026, 10, 12).getTime()) location.replace("/memorial/");
   </script>

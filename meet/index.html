@@ -275,6 +275,7 @@
       var count = document.getElementById("mf-count");
       var PAGE = 10, shown = 0, all = [], loaded = Date.now();
       section.hidden = false;
+      if (location.hash === "#messages") section.scrollIntoView();
 
       function str(v, max) { return typeof v === "string" ? v.slice(0, max) : ""; }
       function showMore() {
