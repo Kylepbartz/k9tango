@@ -17,15 +17,19 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;800&family=Yellowtail&family=Barlow:wght@400;600;700&display=swap">
   <style>
-    :root { --navy: #0f2250; --blue: #1f4fc4; --cream: #fffaf0; }
+    :root { --navy: #0f2250; --blue: #1f4fc4; --cream: #fffaf0; --sky: url("/photos/sky-tablet.jpg"); --a: 0.6667; }
+    /* Pick the sky image closest to the screen shape. Each file is the sky plus a mirrored copy, so it continues past its edges. */
+    @media (max-aspect-ratio: 1/2) { :root { --sky: url("/photos/sky-tall.jpg"); --a: 0.4285; } }
+    @media (min-aspect-ratio: 1/2) and (max-aspect-ratio: 5/8) { :root { --sky: url("/photos/sky-phone.jpg"); --a: 0.5628; } }
+    @media (min-aspect-ratio: 1/1) { :root { --sky: url("/photos/sky-wide.jpg"); --a: 1.7768; } }
     * { box-sizing: border-box; }
     html { -webkit-text-size-adjust: 100%; }
-    body { margin: 0; color: var(--navy); font: 400 18px/1.5 "Barlow", system-ui, sans-serif; overflow-x: hidden; background: #f3dcd0 url("/photos/sky-tall.jpg") top center / 100% auto repeat-y; }
-    /* Fixed sky, 400px taller than the screen at both ends so it also paints under Safari's status bar and toolbar. The image is sized for the screen, and the mirrored tall version continues it above and below. */
+    body { margin: 0; color: var(--navy); font: 400 18px/1.5 "Barlow", system-ui, sans-serif; overflow-x: hidden; background: #f3dcd0 var(--sky) top center / 100% auto repeat-y; }
+    /* Fixed sky, 400px taller than the screen at both ends so it also paints under Safari's status bar and toolbar. The image is sized to cover the screen, and its mirrored copy continues it above and below. */
     .sky { position: fixed; left: 0; width: 100%; top: -400px; height: calc(100vh + 800px); height: calc(100lvh + 800px); z-index: -1; transform: translateZ(0);
-      background: #f3dcd0 url("/photos/sky-tall.jpg") repeat-y;
-      background-size: max(100vw, 66.667vh) auto; background-size: max(100vw, 66.667lvh) auto;
-      background-position: center calc(400px + (100vh - 1.5 * max(100vw, 66.667vh)) / 2); background-position: center calc(400px + (100lvh - 1.5 * max(100vw, 66.667lvh)) / 2); }
+      background: #f3dcd0 var(--sky) repeat-y;
+      background-size: max(100vw, calc(var(--a) * 100vh)) auto; background-size: max(100vw, calc(var(--a) * 100lvh)) auto;
+      background-position: center calc(400px + (100vh - max(100vw, calc(var(--a) * 100vh)) / var(--a)) / 2); background-position: center calc(400px + (100lvh - max(100vw, calc(var(--a) * 100lvh)) / var(--a)) / 2); }
     main { position: relative; max-width: 1040px; margin: 0 auto; padding: calc(34px + env(safe-area-inset-top)) max(20px, env(safe-area-inset-right)) calc(28px + env(safe-area-inset-bottom)) max(20px, env(safe-area-inset-left)); text-align: center; }
     .caps { font-family: "Cinzel", Georgia, serif; text-transform: uppercase; letter-spacing: .04em; }
     .script { font: 400 clamp(30px, 6vw, 40px)/1.1 "Yellowtail", cursive; margin: 0; }
