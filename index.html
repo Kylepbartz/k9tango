@@ -28,6 +28,8 @@
     .paws { display: block; margin: 10px auto 0; font-size: 20px; color: var(--navy); }
     .rule { display: flex; align-items: center; gap: 12px; max-width: 360px; margin: 12px auto 0; }
     .rule::before, .rule::after { content: ""; flex: 1; height: 2px; background: var(--navy); opacity: .7; }
+    .rule svg { flex: none; color: var(--navy); }
+    .dates .rule { margin: 0 auto; width: 100%; max-width: 260px; }
 
     .grid { display: grid; gap: 22px; }
     .quote .script { font-size: clamp(32px, 7vw, 46px); }
@@ -35,7 +37,7 @@
     .portrait img { display: block; width: min(80%, 360px); height: auto; margin: 0 auto; filter: drop-shadow(0 10px 24px rgba(120,80,20,.35)); }
     .dates { display: grid; gap: 14px; }
     .dates .item { font-family: "Cinzel", Georgia, serif; text-transform: uppercase; }
-    .dates small { display: block; font-size: 15px; font-weight: 700; letter-spacing: .06em; border-bottom: 2px solid var(--navy); padding-bottom: 4px; margin-bottom: 6px; }
+    .dates small { display: block; font-size: 15px; font-weight: 700; letter-spacing: .06em; margin-bottom: 4px; }
     .dates b { display: block; font-size: 24px; line-height: 1.15; font-weight: 800; }
     .dates .years b { font-size: 40px; color: var(--blue); line-height: 1; }
     .dates .years span { font-size: 17px; font-weight: 700; }
@@ -84,21 +86,23 @@
       <div class="quote">
         <p class="script">Some heroes</p>
         <p class="sub caps">have four legs, a tail and a heart of gold.</p>
-        <div class="rule" aria-hidden="true"></div>
+        <div class="rule" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true"><ellipse cx="5" cy="11" rx="2.2" ry="3"/><ellipse cx="9.5" cy="6.5" rx="2.2" ry="3"/><ellipse cx="14.5" cy="6.5" rx="2.2" ry="3"/><ellipse cx="19" cy="11" rx="2.2" ry="3"/><path d="M12 12c-3.5 0-6.5 3.2-6.5 6 0 2 1.7 2.8 3.3 2.4 1-.3 2-.6 3.2-.6s2.2.3 3.2.6c1.6.4 3.3-.4 3.3-2.4 0-2.8-3-6-6.5-6z"/></svg></div>
       </div>
       <div class="portrait">
         <img src="/photos/tango-cutout.webp" alt="Tango, a German Shepherd police K9 in his badge collar, smiling with his tongue out." width="630" height="1019">
       </div>
       <div class="dates">
         <div class="item"><small>End of Watch</small><b>October 27, 2026</b></div>
+        <div class="rule" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true"><ellipse cx="5" cy="11" rx="2.2" ry="3"/><ellipse cx="9.5" cy="6.5" rx="2.2" ry="3"/><ellipse cx="14.5" cy="6.5" rx="2.2" ry="3"/><ellipse cx="19" cy="11" rx="2.2" ry="3"/><path d="M12 12c-3.5 0-6.5 3.2-6.5 6 0 2 1.7 2.8 3.3 2.4 1-.3 2-.6 3.2-.6s2.2.3 3.2.6c1.6.4 3.3-.4 3.3-2.4 0-2.8-3-6-6.5-6z"/></svg></div>
         <div class="item"><small>Retired</small><b>October 9, 2026</b></div>
+        <div class="rule" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true"><ellipse cx="5" cy="11" rx="2.2" ry="3"/><ellipse cx="9.5" cy="6.5" rx="2.2" ry="3"/><ellipse cx="14.5" cy="6.5" rx="2.2" ry="3"/><ellipse cx="19" cy="11" rx="2.2" ry="3"/><path d="M12 12c-3.5 0-6.5 3.2-6.5 6 0 2 1.7 2.8 3.3 2.4 1-.3 2-.6 3.2-.6s2.2.3 3.2.6c1.6.4 3.3-.4 3.3-2.4 0-2.8-3-6-6.5-6z"/></svg></div>
         <div class="item years"><b>7 Years</b><span>of service</span></div>
       </div>
     </div>
 
     <h1>Tango</h1>
     <p class="script">Celebration of Life</p>
-    <div class="rule" aria-hidden="true"></div>
+    <div class="rule" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true"><ellipse cx="5" cy="11" rx="2.2" ry="3"/><ellipse cx="9.5" cy="6.5" rx="2.2" ry="3"/><ellipse cx="14.5" cy="6.5" rx="2.2" ry="3"/><ellipse cx="19" cy="11" rx="2.2" ry="3"/><path d="M12 12c-3.5 0-6.5 3.2-6.5 6 0 2 1.7 2.8 3.3 2.4 1-.3 2-.6 3.2-.6s2.2.3 3.2.6c1.6.4 3.3-.4 3.3-2.4 0-2.8-3-6-6.5-6z"/></svg></div>
     <p class="invite">Please help us in honoring and remembering him.</p>
 
     <section class="event" aria-label="Event details">
