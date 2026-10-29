@@ -104,9 +104,16 @@
       .lb { padding: 64px 72px 56px; }
     }
     @media (prefers-reduced-motion: reduce) { .thumb img { transition: none; } }
+    .event-bar { background: #fff3d6; color: #0f2250; text-align: center; padding: 10px 16px; font: 600 15px/1.35 "Barlow", system-ui, sans-serif; border-bottom: 2px solid #e6c97a; }
+    .event-bar a { color: #0f2250; font-weight: 700; white-space: nowrap; }
   </style>
 </head>
 <body>
+<div class="event-bar" id="event-bar">Celebration of Life: Nov 10, 3&ndash;8 PM at Hounds and Tap, Menomonee Falls. <a href="/">Event details &rarr;</a></div>
+<script>
+  // The event page redirects here after Nov 11, so the banner goes away with it.
+  if (Date.now() >= new Date(2026, 10, 12).getTime()) document.getElementById("event-bar").remove();
+</script>
   <header class="topbar">
     <div class="wrap">
       <a href="/memorial/">&larr; Tango&rsquo;s page</a>
